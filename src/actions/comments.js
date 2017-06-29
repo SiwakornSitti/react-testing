@@ -8,7 +8,7 @@ const receiveComments = comments => ({
 
 const getComments = () => (
   dispatch => (
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get('http://localhost:3000/comments')
     .then(res => (dispatch(receiveComments(res.data))))
     .catch(() => (dispatch({ type: GET_COMMENTS_FAILED })))
   )

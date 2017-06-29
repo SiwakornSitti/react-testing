@@ -1,25 +1,22 @@
 import React from 'react'
+import CommentItem from './CommentItem'
 
 const CommentList = props => (
   <div>
-    <button id="toggle-button" className="button is-primary toggle-button" onClick={props.toggleCommentVisablilty}>Show/Hidden</button>
-    <div id="comment-list" className={!props.isOpen && 'is-hidden'}>
+    <div id="comment-list">
       {
         props.comments.map((comment, index) => (
-          <div className="box" key={`comment-${index}`}>
-            <div className="media-content">
-              <div className="content">
-                <p>
-                  <strong>{comment.title}</strong> <small>@johnsmith</small> <small>31m</small>
-                  <br />
-                  {comment.body}
-                </p>
-              </div>
-            </div>
-          </div>
+          <CommentItem
+            key={`comment-${index}`}
+            title={comment.title}
+            body={comment.body}
+            author={comment.author}
+            postat={comment.postat}
+          />
         ))
       }
     </div>
+    <button id="load-more" className="button is-primary load-more" onClick={props.loadMore}>Load More</button>
   </div>
 )
 

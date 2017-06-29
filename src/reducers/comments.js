@@ -3,7 +3,7 @@ import { GET_COMMENTS_SUCCESS, GET_COMMENTS_FAILED } from '../constants/actionty
 const comments = (state = [], action) => {
   switch (action.type) {
     case GET_COMMENTS_SUCCESS:
-      return action.comments
+      return [...state].concat(action.comments)
 
     case GET_COMMENTS_FAILED:
       return []
