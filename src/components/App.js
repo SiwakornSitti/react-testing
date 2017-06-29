@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import CommentList from '../containers/CommentList'
 
 const App = () => (
-  <div id="app" className="container">
+  <div className="container">
     <h1 id="app-title" className="title">Comment List</h1>
     <hr/>
     <CommentList />
