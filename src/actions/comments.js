@@ -1,4 +1,4 @@
-import axios from 'axios'
+import fetch from 'isomorphic-fetch'
 import { GET_COMMENTS_SUCCESS, GET_COMMENTS_FAILED } from '../constants/actiontypes'
 
 const receiveComments = comments => ({
@@ -8,12 +8,14 @@ const receiveComments = comments => ({
 
 const getComments = () => (
   dispatch => (
-    axios.get('http://localhost:3000/comments')
-    .then(res => (dispatch(receiveComments(res.data))))
+    fetch('http://localhost:3000/comments')
+    .then(res => res.json())
+    .then(comments => (dispatch(receiveComments(comments))))
     .catch(() => (dispatch({ type: GET_COMMENTS_FAILED })))
   )
 )
 
 export {
+  receiveComments,
   getComments,
 }
