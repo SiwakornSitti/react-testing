@@ -22,7 +22,11 @@ const mapStateToProps = state => ({
   comments: state.comments,
 })
 
+const mapDispatchToProps = dispatch => ({
+  getComments: () => dispatch(getComments()),
+})
+
 export default connect(
   mapStateToProps,
-  { getComments: getComments },
+  mapDispatchToProps,
 )(CommentListContainer)
